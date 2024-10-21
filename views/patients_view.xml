@@ -1,0 +1,108 @@
+<odoo>
+    <!--    This is Tree of Patient-->
+    <record id="patient_view_tree" model="ir.ui.view">
+        <field name="name">Patients Tree </field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name_sequence"> </field>
+                <field name="name"> </field>
+                <field name="doctor_id"> </field>
+                <field name="height" > </field>
+                <field name="weight" > </field>
+                <field name="phone_number"> </field>
+                <field name="country"> </field>
+                <field name="age"> </field>
+                <field name="status"> </field>
+                <field name="gender"> </field>
+                <field name="date_of_birth"> </field>
+            </tree>
+        </field>
+    </record>
+
+<!--    This is Search View Of Patients-->
+    <record id="patient_view_search" model="ir.ui.view">
+        <field name="name">Patients Search </field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="country"> </field>
+                <field name="name"> </field>
+                <filter name="gender" string="Gender" domain="[('gender','=','male')]"> </filter>
+                <filter name="group_by" string="Doctors" context="{'group_by':'doctor_id'}"> </filter>
+
+            </search>
+        </field>
+    </record>
+<!--    This is Form Of Patients-->
+ <record id="patient_view_form" model="ir.ui.view">
+    <field name="name">Patients form</field>
+    <field name="model">hospital.patient</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <header>
+                    <field name="status" widget="statusbar" > </field>
+                    <button name="action_well" type="object" string="Set To Well" class="oe_highlight"
+                            attrs="{'invisible': [('status', '=', 'well')]}"> </button>
+                    <button name="action_sick" type="object" string="Set To Sick" class="oe_highlight"
+                            attrs="{'invisible': [('status', '=', 'sick')]}"> </button>
+
+                </header>
+                <div class="oe_title">
+                        <h1>
+                            <field name="name_sequence" />
+                        </h1>
+                </div>
+                <group>
+                     <field name="doctor_id"> </field>
+                </group>
+
+                <group string="Patients_Info">
+                     <group string="General_Info">
+                        <field name="name"> </field>
+                        <field name="age"> </field>
+                         <field name="gender"> </field>
+                         <field name="country"> </field>
+                    </group>
+
+                     <group string="Additional_Info">
+                        <field name="phone_number"> </field>
+                         <field name="date_of_birth"> </field>
+                         <field name="height"> </field>
+                         <field name="weight"> </field>
+                         <field name="temperature"> </field>
+
+                    </group>
+                    <group>
+                        <field name="image"> </field>
+                    </group>
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+
+
+
+    <record id="patients_action" model="ir.actions.act_window">
+            <field name="name">Patients</field>
+            <field name="res_model">hospital.patient</field>
+             <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+    </record>
+<!--    <record id="doctors_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Doctors</field>-->
+<!--            <field name="res_model">hospital.doctors</field>-->
+<!--            <field name="view_type">form</field>-->
+<!--            <field name="view_mode">tree,form,graph</field>-->
+
+<!--    </record>-->
+
+
+<!--    <menuitem id="hospital_root_menu" name="Hospital" sequence="10"/>-->
+    <menuitem id="patients_menu" name="Patients"  parent="hospital_root_menu" action="patients_action"/>
+<!--    <menuitem id="doctors_menu" name="Doctors" parent="hospital_root_menu" action="doctors_action"/>-->
+
+</odoo>

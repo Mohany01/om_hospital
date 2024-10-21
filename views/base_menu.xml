@@ -1,0 +1,54 @@
+<odoo>
+<!--    <record id="patient_view_tree" model="ir.ui.view">-->
+<!--        <field name="name">Patients Tree </field>-->
+<!--        <field name="model">hospital.patient</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree>-->
+<!--                <field name="name"> </field>-->
+<!--                <field name="height"> </field>-->
+<!--                <field name="phone_number"> </field>-->
+<!--                <field name="country"> </field>-->
+<!--                <field name="age"> </field>-->
+<!--                <field name="gender"> </field>-->
+<!--                <field name="weight"> </field>-->
+<!--                <field name="date_of_birth"> </field>-->
+<!--            </tree>-->
+
+<!--        </field>-->
+
+<!--    </record>-->
+
+<!-- <record id="doctor_view_tree" model="ir.ui.view">-->
+<!--    <field name="name">Doctors Tree</field>-->
+<!--    <field name="model">hospital.doctors</field>-->
+<!--    <field name="arch" type="xml">-->
+<!--        <tree>-->
+<!--            <field name="name"> </field>-->
+<!--            <field name="phone_number"> </field>-->
+<!--            <field name="gender"> </field>-->
+<!--            <field name="country"> </field>-->
+<!--        </tree>-->
+<!--    </field>-->
+<!--</record>-->
+
+
+
+
+<!--    <record id="patients_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Patients</field>-->
+<!--            <field name="res_model">hospital.patient</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="view_type">form</field>-->
+<!--    </record>-->
+<!--    <record id="doctors_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Doctors</field>-->
+<!--            <field name="res_model">hospital.doctors</field>-->
+<!--            <field name="view_type">form</field>-->
+<!--            <field name="view_mode">tree,form,graph</field>-->
+<!--    </record>-->
+
+    <menuitem id="hospital_root_menu" name="Hospital" sequence="10" web_icon="om-hospital,static/description/icon.png"/>
+    <menuitem id="patients_menu" name="Patients"  parent="hospital_root_menu"/>
+    <menuitem id="doctors_menu" name="Doctors" parent="hospital_root_menu"/>
+
+</odoo>

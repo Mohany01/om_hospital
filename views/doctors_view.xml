@@ -1,0 +1,88 @@
+<odoo>
+
+<!--    This is Search view of doctors-->
+     <record id="doctors_view_search" model="ir.ui.view">
+        <field name="name">Doctors Search </field>
+        <field name="model">hospital.doctors</field>
+        <field name="arch" type="xml">
+            <search>
+                 <field name="age"> </field>
+                 <field name="name"> </field>
+<!--                string attribute this is display name for End user-->
+                 <filter name="age" string="Age" domain="['|',('age','=','22'),('age','=','25')]"> </filter>
+                 <filter name="group_by" string="Country" context="{'group_by':'country'}"> </filter>
+            </search>
+        </field>
+    </record>
+<!--    This is Tree view of Doctors-->
+
+     <record id="doctor_view_tree" model="ir.ui.view">
+        <field name="name">Doctors Tree</field>
+        <field name="model">hospital.doctors</field>
+        <field name="arch" type="xml">
+            <tree >
+             <field name="name"> </field>
+             <field name="phone_number"> </field>
+             <field name="age"> </field>
+            <field name="gender"> </field>
+            <field name="country"> </field>
+            <field name="patients_ids"> </field>
+            </tree>
+        </field>
+    </record>
+<!--    This is Form View of Doctors-->
+     <record id="doctor_view_form" model="ir.ui.view">
+    <field name="name">Doctors form</field>
+    <field name="model">hospital.doctors</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+
+                <group string="Doctors_Info">
+
+                     <group string="General_Info">
+                        <field name="name"> </field>
+                        <field name="patients_ids" widget="many2many_tags"> </field>
+                        <field name="age"> </field>
+                         <field name="gender"> </field>
+                         <field name="country"> </field>
+                    </group>
+
+                     <group string="Additional_Info">
+                        <field name="phone_number"> </field>
+                         <field name="date_of_birth"> </field>
+                    </group>
+                </group>
+            </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+        </form>
+    </field>
+    </record>
+
+
+
+
+
+<!--    <record id="patients_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Patients</field>-->
+<!--            <field name="res_model">hospital.patient</field>-->
+<!--             <field name="view_mode">tree,form</field>-->
+<!--            <field name="view_type">form</field>-->
+<!--    </record>-->
+    <record id="doctors_action" model="ir.actions.act_window">
+            <field name="name">Doctors</field>
+            <field name="res_model">hospital.doctors</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+    </record>
+
+
+<!--    <menuitem id="hospital_root_menu" name="Hospital" sequence="10"/>-->
+<!--    <menuitem id="patients_menu" name="Patients"  parent="hospital_root_menu" action="patients_action"/>-->
+    <menuitem id="doctors_menu" name="Doctors" parent="hospital_root_menu" action="doctors_action"/>
+
+</odoo>
